@@ -1,0 +1,4 @@
+D:/zxionf/vscode/game/build/CMakeFiles/GameEngine.dir
+D:/zxionf/vscode/game/build/CMakeFiles/snake.dir
+D:/zxionf/vscode/game/build/CMakeFiles/edit_cache.dir
+D:/zxionf/vscode/game/build/CMakeFiles/rebuild_cache.dir
