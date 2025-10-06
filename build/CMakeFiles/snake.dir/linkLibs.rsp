@@ -1,1 +1,0 @@
- D:/zxionf/vscode/game/libs/libglfw3.a D:/zxionf/vscode/game/libs/glew32s.lib -lopengl32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
