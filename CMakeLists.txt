@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(al)
 
+# cpp标准
 set(CMAKE_CXX_STANDARD 17)
 
 # 设置编译器标志
@@ -25,10 +26,12 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${GLFW3_INCLUDE_DIRS})
 include_directories(${GLEW_INCLUDE_DIRS})
 
+# 源文件
 file(GLOB_RECURSE ENGIN CONFIGURE_DEPENDS
     LIST_DIRECTORIES false
     "engin/*.cpp" "engin/2d/*.cpp"
 )
+# 排除 3d 部分
 file(GLOB_RECURSE REMOVE_SOURCES "engin/3d/*.*")
 list(REMOVE_ITEM ENGIN ${REMOVE_SOURCES})
 
@@ -37,9 +40,7 @@ add_executable(GameEngine
     main2d.cpp
     ${ENGIN}
 )
-
 target_compile_definitions(GameEngine PRIVATE GLEW_STATIC)
-
 # 链接库
 target_link_libraries(GameEngine 
     ${PROJECT_SOURCE_DIR}/libs/libglfw3.a
@@ -50,6 +51,14 @@ target_link_libraries(GameEngine
 add_executable(snake snake.cpp ${ENGIN})
 target_compile_definitions(snake PRIVATE GLEW_STATIC)
 target_link_libraries(snake 
+    ${PROJECT_SOURCE_DIR}/libs/libglfw3.a
+    ${PROJECT_SOURCE_DIR}/libs/glew32s.lib
+    "opengl32.lib"
+)
+
+add_executable(test test.cpp ${ENGIN})
+target_compile_definitions(test PRIVATE GLEW_STATIC)
+target_link_libraries(test 
     ${PROJECT_SOURCE_DIR}/libs/libglfw3.a
     ${PROJECT_SOURCE_DIR}/libs/glew32s.lib
     "opengl32.lib"

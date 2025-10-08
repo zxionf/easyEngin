@@ -15,26 +15,21 @@ private:
     {
         Vector2<int> dot;
         Vector2<int> dotdirect;
-    } head;
+    } head{{10,10},{0,0}};
 
-    std::vector<Snake> snake; // 使用复数形式作为变量
+    std::vector<Snake> snake;
     bool running = true;
 
 public:
     Simple2DGame() : Application("null", 800, 640), renderer(*this)
     {
-        if (!renderer.initialize())
-            exit(1);
-        head.dot.set(10, 10);
-        head.dotdirect.set(0, 0);
         snake.push_back(head);
         srand(static_cast<unsigned int>(getTime()));
         refreshApplePos();
-        setRenderCallback([this](float dt){ this->render(dt); });
     }
 
 private:
-    void render([[maybe_unused]] float dt)
+    void render([[maybe_unused]] float dt) override
     {
         renderer.setClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);

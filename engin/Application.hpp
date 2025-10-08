@@ -13,6 +13,7 @@ public:
     ~Application();
     
     void run();
+    virtual void render(float deltaTime);
     void shutdown();
     
     void setRenderCallback(RenderCallback callback) { renderCallback = callback; }

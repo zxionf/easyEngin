@@ -45,6 +45,32 @@ game/
     └── shaders/                    # GLSL 着色器
 ```
 
+## 快速开始
+```cpp
+#include "engin/Application.hpp"
+
+class Simple2DGame : public Application
+{
+public:
+    Simple2DGame() : Application("null", 800, 640) {}
+private:
+    void render([[maybe_unused]] float dt) override
+    {
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(1.0, 1.0, 0.0, 1.0);
+    }
+};
+
+int main()
+{
+    Simple2DGame game;
+    game.run();
+    return 0;
+}
+```
+what we get?
+![doc/demo_quickstart.png](./doc/demo_quickstart.png)
+
 ## 目前不足
 - 无法加载图片作为纹理
 - 帧率控制存在严重设计缺陷

@@ -43,8 +43,10 @@ void main() {
 Renderer2D::Renderer2D(const Application& appContext) 
     : appContext(appContext), shaderProgram(0), VAO(0), VBO(0), 
       currentTexture(0), viewOffsetX(0), viewOffsetY(0), viewZoom(1.0f),
-      batchInProgress(false) {
+      batchInProgress(false) 
+{
     vertices.reserve(MAX_VERTICES);
+    if(!initialize()) exit(24001);
 }
 
 Renderer2D::~Renderer2D() {

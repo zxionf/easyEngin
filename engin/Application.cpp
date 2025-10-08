@@ -72,6 +72,8 @@ void Application::run() {
         // 调用渲染回调
         if (renderCallback) {
             renderCallback(static_cast<float>(deltaTime));
+        }else{
+            render(deltaTime);
         }
         
         glfwSwapBuffers(window);
@@ -81,6 +83,10 @@ void Application::run() {
         limitFrameRate();
         updateFrameStats();
     }
+}
+
+void Application::render([[maybe_unused]] float deltaTime){
+
 }
 
 void Application::setTargetFPS(unsigned int fps) {
