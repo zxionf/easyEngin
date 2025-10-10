@@ -9,6 +9,16 @@ Sprite2D::Sprite2D()
     color[3] = 1.0f; // a
 }
 
+Sprite2D::Sprite2D(const std::shared_ptr<Texture2D>& texture) 
+    : position(0, 0), scale(1, 1), rotation(0) {
+    color[0] = 1.0f; // r
+    color[1] = 1.0f; // g  
+    color[2] = 1.0f; // b
+    color[3] = 1.0f; // a
+
+    setTexture(texture);
+}
+
 Vector2<> Sprite2D::getSize() const {
     if (texture && texture->isValid()) {
         return Vector2<>(

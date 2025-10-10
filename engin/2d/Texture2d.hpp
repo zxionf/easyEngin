@@ -6,6 +6,7 @@
 class Texture2D {
 public:
     Texture2D();
+    Texture2D(const std::string& filePath);
     ~Texture2D();
     
     // ¥¥Ω®Œ∆¿Ì
@@ -26,7 +27,7 @@ public:
     bool isValid() const { return textureID != 0; }
     
 private:
-    bool uploadToGPU(const std::vector<unsigned char>& data, GLenum format);
+    bool uploadToGPU(const unsigned char* data, int width, int height, GLenum format, GLenum internalFormat);
     
     GLuint textureID;
     int width, height;

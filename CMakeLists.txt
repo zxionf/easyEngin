@@ -22,14 +22,14 @@ if (MINGW OR MSYS)
 endif()
 
 # 包含目录
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${GLFW3_INCLUDE_DIRS})
-include_directories(${GLEW_INCLUDE_DIRS})
+# include_directories(${CMAKE_SOURCE_DIR}/include)
+# include_directories(${GLFW3_INCLUDE_DIRS})
+# include_directories(${GLEW_INCLUDE_DIRS})
 
 # 源文件
 file(GLOB_RECURSE ENGIN CONFIGURE_DEPENDS
     LIST_DIRECTORIES false
-    "engin/*.cpp" "engin/2d/*.cpp"
+    "engin/*.cpp" "engin/2d/*.cpp" "deps/*.h"
 )
 # 排除 3d 部分
 file(GLOB_RECURSE REMOVE_SOURCES "engin/3d/*.*")
@@ -65,5 +65,4 @@ target_link_libraries(test
 )
 
 # 复制资源文件
-configure_file(assets/shaders/basic.vert ${CMAKE_CURRENT_BINARY_DIR}/assets/shaders/basic.vert COPYONLY)
-configure_file(assets/shaders/basic.frag ${CMAKE_CURRENT_BINARY_DIR}/assets/shaders/basic.frag COPYONLY)
+file(COPY assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

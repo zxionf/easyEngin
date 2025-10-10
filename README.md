@@ -72,6 +72,7 @@ what we get?
 ![doc/demo_quickstart.png](./doc/demo_quickstart.png)
 
 ## 目前不足
-- 无法加载图片作为纹理
+- 加载的图片过大会出现问题
 - 帧率控制存在严重设计缺陷
+- 无法绘制文字
 - ...

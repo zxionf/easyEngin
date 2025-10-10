@@ -7,6 +7,7 @@
 class Sprite2D {
 public:
     Sprite2D();
+    Sprite2D(const std::shared_ptr<Texture2D>& texture);
     
     // ±ä»»
     void setPosition(const Vector2<>& position) { this->position = position; }

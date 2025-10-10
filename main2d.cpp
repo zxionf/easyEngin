@@ -82,7 +82,8 @@ private:
         renderer.beginFrame();
         
         if(isKeyPressed(GLFW_KEY_D))std::cout << "sdsd" << std::endl;
-        
+        renderer.drawSprite(player);
+
         renderer.endFrame();
 
         player.rotate(this->getTime());

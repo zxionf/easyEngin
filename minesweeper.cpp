@@ -54,17 +54,10 @@ private:
                     map[i][j][1] = -1;
                     map[i][j][2] = -1;
                 }
-                    
-                // map[i][j][2] = map[i][j][0];
-                // 绘制
-                if (map[i][j][2] > 0 && map[i][j][2] < 9)
-                    rend(nums.at(map[i][j][2]), i, j);
-                if (map[i][j][2] == -1)
-                    rend(nums.at(0), i, j);
-                if (map[i][j][2] == -2)
-                    rend(bom, i, j);
-                if (map[i][j][2] == -3)
-                    rend(flag, i, j);
+                if (map[i][j][2] > 0 && map[i][j][2] < 9)rend(nums.at(map[i][j][2]), i, j);
+                if (map[i][j][2] == -1)rend(nums.at(0), i, j);
+                if (map[i][j][2] == -2)rend(bom, i, j);
+                if (map[i][j][2] == -3)rend(flag, i, j);
             }
         // renderer.drawSprite(bom);
         renderer.endFrame();
@@ -97,11 +90,9 @@ private:
         {
             // 变换旗子
             if(map[x][y][2] == -1) {
-                // map[x][y][1] = 1;
                 map[x][y][2] = -3;// 更新顶层旗子
             }else if(map[x][y][2] == -3){
                 map[x][y][2] = -1;// 更新顶层旗子
-                // map[x][y][1] = -1;
             }
         }
         // 检测通关条件
@@ -120,15 +111,11 @@ private:
 
     void check(int x, int y)
     {
-        if (x < 0 || x > 23 || y < 0 || y > 17)
-            return;
-        if (map[x][y][2] == 0)
-            return;
-        if (map[x][y][0] == -2)
-            return;
+        if (x < 0 || x > 23 || y < 0 || y > 17)return;
+        if (map[x][y][2] == 0)return;
+        if (map[x][y][0] == -2)return;
         map[x][y][2] = map[x][y][0];
-        if (map[x][y][0] != 0)
-            return;
+        if (map[x][y][0] != 0)return;
 
         else
         {
