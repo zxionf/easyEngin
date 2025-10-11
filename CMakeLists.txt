@@ -25,6 +25,7 @@ endif()
 # include_directories(${CMAKE_SOURCE_DIR}/include)
 # include_directories(${GLFW3_INCLUDE_DIRS})
 # include_directories(${GLEW_INCLUDE_DIRS})
+include_directories(${PROJECT_SOURCE_DIR})
 
 # 源文件
 file(GLOB_RECURSE ENGIN CONFIGURE_DEPENDS
@@ -35,34 +36,29 @@ file(GLOB_RECURSE ENGIN CONFIGURE_DEPENDS
 file(GLOB_RECURSE REMOVE_SOURCES "engin/3d/*.*")
 list(REMOVE_ITEM ENGIN ${REMOVE_SOURCES})
 
-# 添加可执行文件
-add_executable(GameEngine 
-    main2d.cpp
-    ${ENGIN}
-)
-target_compile_definitions(GameEngine PRIVATE GLEW_STATIC)
-# 链接库
-target_link_libraries(GameEngine 
+set(BASE_LIBS
     ${PROJECT_SOURCE_DIR}/libs/libglfw3.a
     ${PROJECT_SOURCE_DIR}/libs/glew32s.lib
-    "opengl32.lib"
+    opengl32.lib
 )
 
-add_executable(snake snake.cpp ${ENGIN})
+# 添加可执行文件
+add_executable(GameEngine main2d.cpp ${ENGIN})
+target_compile_definitions(GameEngine PRIVATE GLEW_STATIC)
+# 链接库
+target_link_libraries(GameEngine ${BASE_LIBS})
+
+add_executable(snake examples/snake.cpp ${ENGIN})
 target_compile_definitions(snake PRIVATE GLEW_STATIC)
-target_link_libraries(snake 
-    ${PROJECT_SOURCE_DIR}/libs/libglfw3.a
-    ${PROJECT_SOURCE_DIR}/libs/glew32s.lib
-    "opengl32.lib"
-)
+target_link_libraries(snake ${BASE_LIBS})
+
+add_executable(minesweeper examples/minesweeper.cpp ${ENGIN})
+target_compile_definitions(minesweeper PRIVATE GLEW_STATIC)
+target_link_libraries(minesweeper ${BASE_LIBS})
 
 add_executable(test test.cpp ${ENGIN})
 target_compile_definitions(test PRIVATE GLEW_STATIC)
-target_link_libraries(test 
-    ${PROJECT_SOURCE_DIR}/libs/libglfw3.a
-    ${PROJECT_SOURCE_DIR}/libs/glew32s.lib
-    "opengl32.lib"
-)
+target_link_libraries(test ${BASE_LIBS})
 
 # 复制资源文件
 file(COPY assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
