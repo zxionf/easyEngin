@@ -24,12 +24,18 @@
 - **回调系统**：灵活的事件回调机制
 
 ### 示例
-- **贪吃蛇游戏**：完整的贪吃蛇实现，展示部分引擎功能  
-![doc/demo_snake.png](./doc/demo_snake.png)
+仅仅展示部分引擎功能  
+
+| | |
+|--|--|
+|贪吃蛇<br>![doc/demo_snake.png](./doc/demo_snake.png)|扫雷<br>![doc/demo_minesweeper.png](./doc/demo_minesweeper.png)|
+
 
 ## 项目结构
 ```
 game/
+├── libs/                           # 动静态库
+├── deps/                           # 依赖
 ├── engin/                          # 引擎核心代码
 │   ├── Application.hpp/cpp         # 应用管理和游戏循环
 │   ├── 2d/                         # 2D 渲染模块
@@ -39,9 +45,13 @@ game/
 │   │   ├── Camera2d.hpp/cpp        # 2D 相机
 │   │   ├── Vector2.hpp             # 2D 向量数学
 │   │   └── Rect.hpp                # 矩形和碰撞检测
-├── snake.cpp                       # 贪吃蛇游戏示例
+├── examples/                       # 示例代码
+│   ├── snake.cpp                   # 贪吃蛇
+│   ├── minesweeper.cpp             # 扫雷
+├── doc/                            # 截图和文档
 ├── CMakeLists.txt                  # 构建配置
 └── assets/                         # 资源文件
+    ├── textures/                   # 材质
     └── shaders/                    # GLSL 着色器
 ```
 
